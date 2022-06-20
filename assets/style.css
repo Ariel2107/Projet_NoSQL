@@ -1,0 +1,67 @@
+.header-title {
+    "font-family": "Lato, sans-serif",
+    'color': '#ffffff',
+    'font-size': '48px',
+    'font-weight': 'bold',
+    'text-align': 'center',
+    'margin': '0 auto',
+    'line-height': '200px',
+    "background-image": "url('/assets/Background.jpg')",
+    "background-repeat": "no-repeat",
+    "background-position": "right top",
+    'background-color': '#222222',
+    'height': '200px',
+}
+
+.custom-tab {
+    'color': "#586069",
+    'font-size': '18px',
+    'border-top-left-radius': "3px",
+    "border-top-right-radius": "3px",
+    "border-top": "3px solid transparent",
+    "border-left": "0px",
+    "border-right": "0px",
+    "border-bottom": "0px",
+    "background-color": "#fafbfc",
+    "padding": "12px",
+    "font-family": "system-ui",
+    "display": "flex",
+    "align-items": "center",
+    "justify-content": "center"
+}
+
+.custom-tab-selected {
+    'color': "#586069",
+    'font-size': '18px',
+    'border-top-left-radius': "3px",
+    "border-top-right-radius": "3px",
+    "border-top": "3px solid transparent",
+    "border-left": "0px",
+    "border-right": "0px",
+    "border-bottom": "0px",
+    "background-color": "rgb(197, 244, 87)",
+    "padding": "12px",
+    "font-family": "system-ui",
+    "display": "flex",
+    "align-items": "center",
+    "justify-content": "center"
+}
+
+.custom-tabs {
+    "border-top-left-radius": "3px",
+    "background-color": "rgb(57, 59, 218)",
+    "padding": "0px 0px",
+    "border-bottom": "1px solid #d6d6d6",
+}
+
+.Intro-description {
+    "font-family": "Lato, sans-serif",
+    'color': '#586069',
+    'font-size': '18px',
+    'text-align': 'center',
+    'line-height': '30px',
+    'margin': '50px 200px 100px 200px',
+}
+
+
+
