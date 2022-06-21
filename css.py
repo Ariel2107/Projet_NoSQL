@@ -1,7 +1,7 @@
 # Style CSS
 
 header_title = {
-    "font-family": "Lato, sans-serif",
+    "font-family": "Montserrat, sans-serif",
     'color': '#ffffff',
     'font-size': '48px',
     'font-weight': 'bold',
@@ -26,7 +26,7 @@ custom_tab = {
     "border-bottom": "0px",
     "background-color": "#fafbfc",
     "padding": "12px",
-    "font-family": "system-ui",
+    "font-family": "Montserrat",
     "display": "flex",
     "align-items": "center",
     "justify-content": "center"
@@ -43,7 +43,7 @@ custom_tab_selected = {
     "border-bottom": "0px",
     "background-color": "rgb(197, 244, 87)",
     "padding": "12px",
-    "font-family": "system-ui",
+    "font-family": "Montserrat",
     "display": "flex",
     "align-items": "center",
     "justify-content": "center"
@@ -57,19 +57,12 @@ custom_tabs = {
 }
 
 Intro_description = {
-    "font-family": "Lato, sans-serif",
+    "font-family": "Montserrat, sans-serif",
     'color': '#586069',
     'font-size': '18px',
     'text-align': 'center',
     'line-height': '30px',
     'margin': '50px 200px 100px 200px',
-}
-
-gif_intro = {
-    'margin-right': '478px',
-    'margin-left': '478px',
-    'height': '278px',
-    "box-shadow": "8px 8px 8px 0px rgba(0, 0, 0, 0.18)",
 }
 
 background_style = {"background-image": "url('/assets/menu_bg.jpg')",
@@ -80,7 +73,7 @@ background_style = {"background-image": "url('/assets/menu_bg.jpg')",
                     "width": "1422px",
                     "background-repeat": "no-repeat"}
 
-font = {"font-family": "Lato, sans-serif",
+font = {"font-family": "Montserrat, sans-serif",
         'color': '#ffffff',
         'font-size': '24px',
         'text-align': 'center',
@@ -88,3 +81,34 @@ font = {"font-family": "Lato, sans-serif",
         'display': 'inline-block',
         'margin-top': '10%',
         'width': '50%'}
+
+tex_input = {"font-family": "Montserrat, sans-serif",
+        'background-color': '#1e1e1e',
+        'font-color': 'white',
+        'font-size': '24px',
+        'text-align': 'left',
+        'display': 'inline-block',
+        'margin-top': '1%',
+        'margin-left': "5%",
+        'padding-left': '2%',
+        'float': 'left',
+        'width': '50%'}
+
+radar = {
+    'width': '40%',
+    'display': 'inline-block',
+    'float': 'left',
+    'margin-left': '5%'
+}
+
+given_mean = {"font-family": "Montserrat, sans-serif",
+        'text-align': 'center',
+        'color': 'white',
+        'font-size': '50px',
+        'display': 'inline-block',
+        'margin-top': '5%',
+        'float': 'right',
+        'margin-right': '15%',
+        'width': '20%'}
+
+mean_title = {'font-size': '20px'}
