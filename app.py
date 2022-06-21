@@ -16,7 +16,7 @@ limitation = {'$limit': 1000}
 unique = {"$group": {"_id": "$name", "uniqueCount": {"$max": "$rating"}}}
 l = list(db.players.aggregate([unique, sort, limitation]))
 players_list = [i['_id'] for i in l]
-players_list = [{"label": i, "value": i} for i in players_list] + [{'label': 'Moyenne', 'value': 'Moyenne'}]
+players_list = [{"label": i.upper(), "value": i} for i in players_list] + [{'label': 'MOYENNE', 'value': 'MOYENNE'}]
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 
@@ -53,9 +53,12 @@ def render_content(tab):
             dcc.Dropdown(
                 id='num_multi',
                 options=players_list,
-                value='Moyenne',
+                value='MOYENNE',
                 style=css.tex_input
             ),
+            html.Table([
+                html.Tr([html.Td(id='player-name')])
+            ], style=css.title_name),
             html.Div([
                 html.Table([
                     html.Tr([html.Td(id='given-mean')]),
@@ -66,7 +69,7 @@ def render_content(tab):
                             style=css.mean_title)
                 ], style=css.given_mean),
                 dcc.Graph(id='ratings_radar', style=css.radar)
-            ], style={'width': '100%', 'padding-top': '10%'}),
+            ], style={'width': '100%', 'padding-top': '2%'}),
 
         ], style=css.background_style)
     elif tab == 'tab-profil':
@@ -83,6 +86,7 @@ def render_content(tab):
     Output('given-mean', 'children'),
     Output('calculated-mean', 'children'),
     Output(component_id="ratings_radar", component_property="figure"),
+    Output('player-name', 'children'),
     Input('num_multi', 'value'))
 def update_output(num_multi):
     true_mean = {"$group":
@@ -102,7 +106,7 @@ def update_output(num_multi):
                          }
                     }
     attributes = ['Rating', 'Pace', 'Shooting', 'Passing', 'Dribbling', 'Defending', 'Physicality']
-    if num_multi == 'Moyenne':
+    if num_multi == 'MOYENNE':
         ratings = list(
             db.players.find({}, {"pace": 1, "shooting": 1, "passing": 1, "dribbling": 1, "defending": 1,
                                         "physicality": 1, '_id': 0}))
@@ -129,7 +133,12 @@ def update_output(num_multi):
     fig = go.Figure(data=go.Scatterpolar(
         r=ratings_list,
         theta=attributes,
-        line=dict(color='rgb(197, 244, 87)', width=2)
+        line=dict(color='rgb(197, 244, 87)', width=5),
+        fill='toself',
+        visible=True,
+        textfont=dict(color="rgb(255,255,255)",
+                      family="Open Sans",
+                      size=5),
     ))
 
     fig.update_layout(
@@ -140,10 +149,18 @@ def update_output(num_multi):
         ),
         showlegend=False,
         paper_bgcolor="rgb(0,0,0,0)",
-        plot_bgcolor="rgb(0,0,0,0)"
+        plot_bgcolor="#1e1e1e",
+        font=dict(color="rgb(255,255,255)",
+                      family="Open Sans",
+                      size=15),
+        margin=dict(b=15,
+                    l=15,
+                    r=15,
+                    t=15),
+        template="plotly_dark"
     )
 
-    return given_moy, ratings_moy, fig
+    return given_moy, ratings_moy, fig, num_multi.upper()
 
 if __name__ == '__main__':
     app.run_server(debug=True)

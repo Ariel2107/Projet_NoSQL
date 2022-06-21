@@ -71,7 +71,8 @@ background_style = {"background-image": "url('/assets/menu_bg.jpg')",
                     'margin': '0 auto',
                     "height": '798px',
                     "width": "1422px",
-                    "background-repeat": "no-repeat"}
+                    "background-repeat": "no-repeat",
+                    "align-items": "center"}
 
 font = {"font-family": "Montserrat, sans-serif",
         'color': '#ffffff',
@@ -107,9 +108,20 @@ given_mean = {"font-family": "Montserrat, sans-serif",
         'color': 'white',
         'font-size': '50px',
         'display': 'inline-block',
-        'margin-top': '5%',
+        'margin-top': '0%',
         'float': 'right',
         'margin-right': '15%',
         'width': '20%'}
 
 mean_title = {'font-size': '20px'}
+
+title_name = {"font-family": "Montserrat, sans-serif",
+        'margin-left': '25%',
+        'margin-right': '25%',
+        'margin-top': '1%',
+        'height': "5%",
+        'color': 'white',
+        'font-size': '50px',
+        'width': '50%',
+        'float': 'center',
+        'font-weight': 'bold'}

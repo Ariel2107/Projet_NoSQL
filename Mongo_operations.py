@@ -52,6 +52,44 @@ mean_ratings = {"$group":
                      }
                 }
 
+nb_position = {"$group":
+                   {'_id': '$position',
+                    'total': {"$sum": 1}}
+               }
+print(list(db.players.aggregate([nb_position])))
 ratings_list = [values for key, values in list(db.players.aggregate([match_player, mean_ratings]))[0].items()][1:]
 print(list(dict.keys(list(db.players.aggregate([match_player, mean_ratings]))[0]))[1:])
 
+print("FIFA TEAM")
+sort = {'$sort': {'rating': -1}}
+position_wanted = ["GK", "CB", "RB", "LB", "CM", "CAM", "RW", "LW", "ST"]
+projection = {"$project": {
+    "_id": 0,
+    "name": 1,
+    "rating": 1,
+    "moyenne aggrégée": {"$divide": [{"$add": ["$physicality", "$passing", "$dribbling", "$pace", "$shooting", "$defending"]}, 6]},
+    }
+}
+
+for position in position_wanted:
+    if position in ["CB", "CM"]:
+        limitation = {'$limit': 2}
+    else:
+        limitation = {'$limit': 1}
+    find_post = {"$match": {"position": position}}
+    players = list(db.players.aggregate([find_post, projection, sort, limitation]))
+    for player in players:
+        print(f"{position}: {player['name']} {player['rating']} {player['moyenne aggrégée']}")
+
+print("\nAGGREGATED TEAM\n")
+
+sort = {"$sort": {'moyenne aggrégée': -1}}
+for position in position_wanted:
+    if position in ["CB", "CM"]:
+        limitation = {'$limit': 2}
+    else:
+        limitation = {'$limit': 1}
+    find_post = {"$match": {"position": position}}
+    players = list(db.players.aggregate([find_post, projection, sort, limitation]))
+    for player in players:
+        print(f"{position}: {player['name']} {player['rating']} {player['moyenne aggrégée']}")
