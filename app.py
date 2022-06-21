@@ -128,7 +128,8 @@ def update_output(num_multi):
         theta=attributes))
     fig = go.Figure(data=go.Scatterpolar(
         r=ratings_list,
-        theta=attributes
+        theta=attributes,
+        line=dict(color='rgb(197, 244, 87)', width=2)
     ))
 
     fig.update_layout(

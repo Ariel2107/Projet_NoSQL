@@ -98,7 +98,8 @@ radar = {
     'width': '40%',
     'display': 'inline-block',
     'float': 'left',
-    'margin-left': '5%'
+    'margin-left': '5%',
+    'height': '100%'
 }
 
 given_mean = {"font-family": "Montserrat, sans-serif",
