@@ -7,6 +7,7 @@ import statistics
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import base64
 
 client = MongoClient()
 
@@ -17,6 +18,10 @@ unique = {"$group": {"_id": "$name", "uniqueCount": {"$max": "$rating"}}}
 l = list(db.players.aggregate([unique, sort, limitation]))
 players_list = [i['_id'] for i in l]
 players_list = [{"label": i.upper(), "value": i} for i in players_list] + [{'label': 'MOYENNE', 'value': 'MOYENNE'}]
+
+
+
+print(db.players.find_one({"position": "GK"}))
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 
@@ -78,8 +83,28 @@ def render_content(tab):
         ], style=css.background_style)
     elif tab == 'tab-team':
         return html.Div([
-
+            dcc.RadioItems(
+                id='display_teams',
+                options=[
+                    {'label': 'Rating', 'value': 'rating'},
+                    {'label': 'Average', 'value': 'average'},
+                ],
+                value='rating',
+                labelStyle={'display': 'inline-block'},
+                style=css.custom_radio
+            ),
+            html.Div([], id='id_div')
         ], style=css.background_style)
+
+@app.callback(Output('id_div', 'children'),
+              Input('display_teams', 'value'),
+              suppress_callback_exceptions=True)
+def team_display(value):
+    if value == 'rating':
+        return html.Div([ ], style = css.best_team_rating)
+    elif value == 'average':
+
+        return html.Div([ ],style = css.best_team_average)
 
 
 @app.callback(
