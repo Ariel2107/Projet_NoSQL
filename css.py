@@ -83,6 +83,13 @@ font = {"font-family": "Montserrat, sans-serif",
         'margin-top': '10%',
         'width': '50%'}
 
+gif_intro = {
+    'margin-right': '478px',
+    'margin-left': '478px',
+    'height': '278px',
+    "box-shadow": "8px 8px 8px 0px rgba(0, 0, 0, 0.18)",
+}
+
 tex_input = {"font-family": "Montserrat, sans-serif",
         'background-color': '#1e1e1e',
         'font-color': 'white',
@@ -125,3 +132,39 @@ title_name = {"font-family": "Montserrat, sans-serif",
         'width': '50%',
         'float': 'center',
         'font-weight': 'bold'}
+
+best_team_average = {
+                    "background-image": "url('/assets/best_team_average.PNG')",
+                    "background-size": "752px 543px",
+                    'text-align': 'center',
+                    'margin': '55px auto',
+                    'margin-top': '20px',
+                    "height": '543px',
+                    "width": "752px",
+                    "background-repeat": "no-repeat"}
+
+best_team_rating = {"background-image": "url('/assets/best_team_rating.PNG')",
+                    "background-size": "752px 543px",
+                    'text-align': 'center',
+                    'margin': '55px auto',
+                    'margin-top': '20px',
+                    "height": '543px',
+                    "width": "752px",
+                    "background-repeat": "no-repeat"}
+
+custom_radio = {
+    'color': "#D3D3D3",
+    'font-size': '25px',
+    'font-weight': '700',
+    'border-top-left-radius': "3px",
+    "border-top-right-radius": "3px",
+    "border-top": "3px solid transparent",
+    "border-left": "0px",
+    "border-right": "0px",
+    "border-bottom": "0px",
+    "padding": "12px",
+    "font-family": "system-ui",
+    "display": "flex",
+    "align-items": "center",
+    "justify-content": "center"
+}
