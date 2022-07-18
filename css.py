@@ -83,6 +83,22 @@ font = {"font-family": "Montserrat, sans-serif",
         'margin-top': '10%',
         'width': '50%'}
 
+font_tab = {"font-family": "Montserrat, sans-serif",
+        'color': '#ffffff',
+        'font-size': '24px',
+        'text-align': 'center',
+        'font-weight': 'bold',
+        'display': 'inline-block',
+        'margin-top': '2%',
+        'width': '100%'}
+
+tab = {"font-family": "Montserrat, sans-serif",
+        'text-align': 'center',
+        'color': 'white',
+        'font-size': '20px',
+        "align-items": "center",
+        'width': '100%'}
+
 gif_intro = {
     'margin-right': '478px',
     'margin-left': '478px',

@@ -7,7 +7,8 @@ import statistics
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import base64
+import mamadou_tools
+import dash_bootstrap_components as dbc
 
 client = MongoClient()
 
@@ -19,9 +20,29 @@ l = list(db.players.aggregate([unique, sort, limitation]))
 players_list = [i['_id'] for i in l]
 players_list = [{"label": i.upper(), "value": i} for i in players_list] + [{'label': 'MOYENNE', 'value': 'MOYENNE'}]
 
+avg_age = mamadou_tools.avg_players_age()
+max_age = mamadou_tools.max_players_age()
+min_age = mamadou_tools.min_players_age()
+
+avg_height = mamadou_tools.avg_players_height()
+max_height = mamadou_tools.max_players_height()
+min_height = mamadou_tools.min_players_height()
+
+avg_weight = mamadou_tools.avg_players_weight()
+max_weight = mamadou_tools.max_players_weight()
+min_weight = mamadou_tools.min_players_weight()
+
+position = mamadou_tools.df_player_by_position()
+fig = px.pie(position, values='count', names='new_position')
+fig.update_layout(
+        showlegend=True,
+        paper_bgcolor="rgb(0,0,0,0)",
+        plot_bgcolor="#1e1e1e",
+        template="plotly_dark"
+    )
 
 
-print(db.players.find_one({"position": "GK"}))
+
 
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 
@@ -79,8 +100,30 @@ def render_content(tab):
         ], style=css.background_style)
     elif tab == 'tab-profil':
         return html.Div([
+            html.Table([
+                html.Tr([html.Th(" ")]),
+                html.Tr([html.Th("AGE"), html.Th("TAILLE"), html.Th("POIDS")], style=css.mean_title),
+                html.Tr([html.Th(""), html.Th("MOYENNE"), html.Th("")], style=css.mean_title),
+                html.Tr([html.Td(avg_age), html.Td(avg_height), html.Td(avg_weight)]),
+                html.Tr([html.Th(""), html.Th("MINIMUM"), html.Th("")], style=css.mean_title),
+                html.Tr([html.Td(min_age), html.Td(min_height), html.Td(min_weight)]),
+                html.Tr([html.Th(""), html.Th("MAXIMUM"), html.Th("")], style=css.mean_title),
+                html.Tr([html.Td(max_age), html.Td(max_height), html.Td(max_weight)])
+            ], style=css.tab),
+
+            html.Div([
+                dcc.Graph(figure=fig, style={
+                    "width": "40%",
+                    "display": "inline-block",
+                    "overflow": "hidden",
+                    "top": "40%",
+                    "left": "50%",
+                    "margin-top": "0%"
+                })
+            ])
 
         ], style=css.background_style)
+
     elif tab == 'tab-team':
         return html.Div([
             dcc.RadioItems(
